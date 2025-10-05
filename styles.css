@@ -73,6 +73,27 @@ p,li,small{ color: var(--text) }
 .nav a[aria-current="page"]{ background:#1b1c21 }
 .logo{ display:flex; align-items:center; justify-content:center; padding:.5rem 1rem }
 .logo-img{ display:block; max-height:50px; height:auto; width:auto }
+/* Accessible skip link styles */
+.skip-link{
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  padding: .6rem .9rem;
+  background: #fff;
+  color: #000;
+  border-radius: .5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  text-decoration: none;
+  z-index: 1000;
+
+  /* visually hidden until focused */
+  transform: translateY(-150%);
+  transition: transform .2s ease;
+}
+.skip-link:focus{
+  transform: translateY(0);
+  outline: 3px solid #7dd3fc; /* visible focus ring */
+}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -81,7 +102,7 @@ p,li,small{ color: var(--text) }
   border:1px solid var(--border); background:#ffffff12; color:var(--text);
   cursor:pointer; transition: background .25s ease, transform .2s ease;
 }
-.btn:hover{ background:#ffffff20; transform: translateY(-1px) }
+.btn:hover{ background:#521559; transform: translateY(-1px) }
 .btn:focus{ outline:3px solid var(--ring); outline-offset:2px }
 .btn.primary{ background: var(--accent-gold); color:#1a1206; border-color: transparent; font-weight:700 }
 .btn.ink{ background: var(--accent-ink); color:#f1f5f9; border-color: transparent }

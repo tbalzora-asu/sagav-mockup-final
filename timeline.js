@@ -41,3 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   render();
 });
+// move programmatic focus to <main> after jump (for some screen readers)
+document.querySelector('.skip-link')?.addEventListener('click', e => {
+  const target = document.getElementById('main-content');
+  if (target){ target.setAttribute('tabindex','-1'); target.focus(); }
+});
