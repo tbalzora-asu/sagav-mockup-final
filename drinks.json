@@ -1,0 +1,67 @@
+[
+  {
+    "id": "the-sun",
+    "name": "The Sun",
+    "color": "#D97706",
+    "accent": "#F59E0B",
+    "ingredients": [
+      "Golden turmeric syrup",
+      "Citrus zest",
+      "Pineapple juice",
+      "Sparkling tonic"
+    ],
+    "vibe": "Radiant, uplifting, full of clarity and optimism. A burst of light in liquid form."
+  },
+  {
+    "id": "the-fool",
+    "name": "The Fool",
+    "color": "#22C55E",
+    "accent": "#4ADE80",
+    "ingredients": [
+      "Green apple",
+      "Mint infusion",
+      "Lime",
+      "Coconut water"
+    ],
+    "vibe": "Playful, adventurous, open-hearted. A refreshing start to any new journey."
+  },
+  {
+    "id": "the-magician",
+    "name": "The Magician",
+    "color": "#7E22CE",
+    "accent": "#C084FC",
+    "ingredients": [
+      "Blackberry",
+      "Elderflower",
+      "Activated charcoal",
+      "Soda"
+    ],
+    "vibe": "Mysterious, creative, and transformative. Every sip feels like alchemy in motion."
+  },
+  {
+    "id": "the-siren",
+    "name": "The Siren",
+    "color": "#01497C",
+    "accent": "#2D8CAB",
+    "ingredients": [
+      "Blue spirulina",
+      "Sea salt foam",
+      "Lemongrass syrup",
+      "Sparkling water"
+    ],
+    "vibe": "Enchanting, soothing, and deep. A tidal call to reflection and desire."
+  },
+  {
+    "id": "the-oracle",
+    "name": "The Oracle",
+    "color": "#72254A",
+    "accent": "#CFB482",
+    "ingredients": [
+      "Pomegranate",
+      "Lavender honey",
+      "Cardamom bitters",
+      "Rose water mist"
+    ],
+    "vibe": "Intuitive, elegant, and contemplative. Wisdom in every sip."
+  }
+]

@@ -1,0 +1,392 @@
+/* ===========================
+   Saga V — Clean Stylesheet
+   =========================== */
+
+/* ---------- CSS Variables ---------- */
+:root{
+  /* Core brand palette */
+  --black: #0A080A;
+  --deep-purple: #211933;
+  --magenta-dark: #541432;
+  --magenta-rose: #72254A;
+  --violette: #72254A;
+  --lavender: #72254A;
+
+  /* Additional accents */
+  --accent-ink: #1A2735;
+  --accent-gold: #CFB482;
+  --accent-caramel: #9C704C;
+
+  /* Text & Background */
+  --bg: var(--black);
+  --text: #F5F5F6;
+  --muted: #B8B8C2;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+
+  /* Effects */
+  --ring: #7dd3fc;
+
+  /* Type */
+  --font-display: "Metamorphous", system-ui, serif;
+  --font-body: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Tarot drink palettes */
+  --sun-d1: #D97706; --sun-m: #F59E0B; --sun-l: #FEF3C7;
+  --siren-d1: #01497C; --siren-m: #2D8CAB; --siren-l: #E0FBFC;
+  --fool-d1: #065F46; --fool-m: #10B981; --fool-l: #D1FAE5;
+  --magician-d1: #5B21B6; --magician-m: #8B5CF6; --magician-l: #EDE9FE;
+  --oracle-d1: #991B1B; --oracle-m: #DC2626; --oracle-l: #FECACA;
+}
+
+/* ---------- Base / Resets ---------- */
+*{ box-sizing:border-box }
+html{ scroll-behavior:smooth }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height:1.6;
+}
+img{ display:block; max-width:100%; height:auto }
+a{ color:inherit; text-decoration:none }
+.container{ width:100%; max-width:1120px; margin:0 auto; padding:0 1rem }
+
+/* ---------- Typography ---------- */
+.font-display{ font-family: var(--font-display); letter-spacing:.2px }
+.font-body{ font-family: var(--font-body) }
+h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); margin:0 0 .5rem }
+p,li,small{ color: var(--text) }
+.muted{ color: var(--muted) }
+
+/* ---------- Header / Nav ---------- */
+.header{
+  position:sticky; top:0; z-index:50;
+  background: rgba(10,10,12,.7); backdrop-filter: blur(8px);
+  border-bottom:1px solid #1e1f23;
+}
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:.75rem 0 }
+.nav ul{ display:flex; gap:1rem; list-style:none; margin:0; padding:0 }
+.nav a{ padding:.5rem .75rem; border-radius:.6rem }
+.nav a:focus{ outline:3px solid var(--ring); outline-offset:2px }
+.nav a[aria-current="page"]{ background:#1b1c21 }
+.logo{ display:flex; align-items:center; justify-content:center; padding:.5rem 1rem }
+.logo-img{ display:block; max-height:50px; height:auto; width:auto }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.75rem 1rem; border-radius:999px;
+  border:1px solid var(--border); background:#ffffff12; color:var(--text);
+  cursor:pointer; transition: background .25s ease, transform .2s ease;
+}
+.btn:hover{ background:#ffffff20; transform: translateY(-1px) }
+.btn:focus{ outline:3px solid var(--ring); outline-offset:2px }
+.btn.primary{ background: var(--accent-gold); color:#1a1206; border-color: transparent; font-weight:700 }
+.btn.ink{ background: var(--accent-ink); color:#f1f5f9; border-color: transparent }
+
+/* ---------- Cards / Surfaces ---------- */
+.card{
+  position:relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow:hidden;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+}
+.card:hover{
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  border-color: #ffffff28;
+}
+.card::before{
+  content:"";
+  position:absolute; inset:0; border-radius: inherit;
+  background: radial-gradient(circle at 30% 20%, #ffffff26 0%, transparent 70%);
+  opacity:0; transition:opacity .35s ease; pointer-events:none;
+}
+.card:hover::before{ opacity:1 }
+.card .chip{
+  display:inline-block; padding:.25rem .5rem; border-radius:999px; font-size:.75rem; font-weight:600;
+}
+
+/* ---------- Drink color utilities ---------- */
+.sun-bg{ background: linear-gradient(135deg, var(--sun-d1), var(--sun-m)); color: #1f1505; }
+.sun-chip{ background: var(--sun-l); color: #92400e; }
+.siren-bg{ background: linear-gradient(135deg, var(--siren-d1), var(--siren-m)); color: #031e2f; }
+.siren-chip{ background: var(--siren-l); color: #0f4c81; }
+.fool-bg{ background: linear-gradient(135deg, var(--fool-d1), var(--fool-m)); color: #042b23; }
+.fool-chip{ background: var(--fool-l); color: #0b5f4a; }
+.magician-bg{ background: linear-gradient(135deg, var(--magician-d1), var(--magician-m)); color: #201445; }
+.magician-chip{ background: var(--magician-l); color: #4c1d95; }
+.oracle-bg{ background: linear-gradient(135deg, var(--oracle-d1), var(--oracle-m)); color: #2e0a0a; }
+.oracle-chip{ background: var(--oracle-l); color: #7f1d1d; }
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative; min-height:68vh; display:grid; place-items:center; overflow:hidden;
+  border-bottom:1px solid #1e1f23;
+}
+.hero video, .hero .poster{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:contrast(1.05) saturate(1.05) brightness(.8);
+}
+.hero .scrim{ position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.25)) }
+.hero .content{ position:relative; padding:3rem 0; text-align:center }
+.hero-title{ font-size: clamp(2.2rem, 4vw, 4rem); line-height:1.05; margin:0 0 .75rem }
+.hero-sub{ color: var(--muted); max-width: 60ch; margin:0 auto }
+
+/* ---------- Sections / Timeline ---------- */
+.section{ padding:3rem 0; border-bottom:1px solid #1e1f23 }
+.tl-card{ border:1px solid var(--border); background: linear-gradient(180deg, #ffffff08, #ffffff03) }
+.timeline{ position:relative; margin:2rem 0; padding-left:1rem }
+.timeline::before{ content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#2a2b30; border-radius:2px }
+.tl-item{ position:relative; margin:0 0 1.5rem 0; padding-left:1.5rem }
+.tl-item::before{
+  content:""; position:absolute; left:-2px; top:.4rem; width:10px; height:10px; border-radius:999px;
+  background: var(--accent-gold); box-shadow:0 0 0 4px #cfb48222;
+}
+.tl-item h4{ margin:.25rem 0 }
+.tl-item p{ margin:.25rem 0; color: var(--muted) }
+
+/* ---------- Generic grid helpers ---------- */
+.grid{ gap:1rem }
+.grid-2{ grid-template-columns:repeat(2, minmax(0,1fr)) }
+@media (max-width: 640px){ .grid-2{ grid-template-columns: 1fr } }
+
+/* ---------- Pentagon Grid (compact + safe edges) ---------- */
+.pentagon-grid{
+  --gap: clamp(.75rem, 1.2vw, 1.25rem);
+  display:grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* minmax(0,1fr) avoids overflow clipping */
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    ". top top top ."
+    "left . center . right"
+    ". . bottom . .";
+  align-items:center;
+  justify-items:center;
+  padding-inline: 1rem;              /* breathing room so rightmost item never hugs the edge */
+}
+
+/* keep items mapped to areas */
+.pentagon-grid > *:nth-child(1){ grid-area: top; }
+.pentagon-grid > *:nth-child(2){ grid-area: left; }
+.pentagon-grid > *:nth-child(3){ grid-area: right; }  /* The Magician (3rd) goes here */
+.pentagon-grid > *:nth-child(4){ grid-area: bottom; }
+.pentagon-grid > *:nth-child(5){ grid-area: center; }
+
+/* ---------- Card sizing + explicit inner layout ---------- */
+.pentagon-grid .card{
+  width: clamp(140px, 14vw, 180px);  /* smaller so it never overflows the far-right column */
+  aspect-ratio: 2 / 3;               /* slightly shorter aspect ratio */
+  padding: 0;
+
+  display: grid;
+  grid-template-rows: 1fr auto;      /* image row + label row */
+  align-items: stretch;
+  justify-items: stretch;
+  overflow: hidden;                  /* keep hover shine tidy */
+}
+
+/* image sits in row 1 explicitly so it never fights the label */
+.product-card img{
+  grid-row: 1 / 2;
+  width:100%; height:100%;
+  object-fit: contain;
+  border-radius:.6rem;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), filter .35s;
+}
+.product-card:hover img{
+  transform: scale(1.015);
+  filter: saturate(1.06) contrast(1.03) brightness(1.04);
+}
+
+/* label is row 2; always visible, never clipped */
+.card-label{
+  grid-row: 2 / 3;
+  display:block;
+  padding: .5rem .6rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-top: 1px solid var(--border);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.card-title{
+  display:block;
+  font-family: var(--font-display);
+  font-size: .95rem;
+  line-height: 1.1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card-sub{
+  display:block;
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: .15rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Shine sweep remains */
+.product-card{ position:relative }
+.product-card .shine{
+  position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(75deg, transparent 10%, rgba(255,255,255,.10) 40%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .7s cubic-bezier(.2,.8,.2,1);
+}
+.product-card:hover .shine{ transform: translateX(120%) }
+
+/* Tablet: keep shape but allow a bit more size */
+@media (max-width: 1024px){
+  .pentagon-grid{
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    grid-template-areas:
+      ". top ."
+      "left center right"
+      ". bottom .";
+  }
+  .pentagon-grid .card{
+    width: clamp(160px, 22vw, 220px);
+  }
+}
+
+/* Mobile: vertical stack */
+@media (max-width: 640px){
+  .pentagon-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "top"
+      "center"
+      "left"
+      "right"
+      "bottom";
+  }
+  .pentagon-grid .card{
+    width: min(82vw, 360px);
+  }
+}
+/* ---------- Shop grid ---------- */
+.shop-grid{
+  display:grid;
+  gap: clamp(1rem, 2vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items:start;
+}
+
+/* Card sizing for shop */
+.shop-grid .card.product-card{
+  padding: 0;                    /* let content fill */
+  display: grid;
+  grid-template-rows: auto auto auto;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Image area */
+.shop-grid .product-media{
+  aspect-ratio: 2 / 3;
+  display:grid; place-items:center;
+  padding: .75rem;
+  background: linear-gradient(180deg, #ffffff08, #ffffff03);
+  border-bottom: 1px solid var(--border);
+}
+.shop-grid .product-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: .6rem;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), filter .35s;
+}
+.shop-grid .card.product-card:hover .product-media img{
+  transform: scale(1.02);
+  filter: saturate(1.04) contrast(1.03) brightness(1.04);
+}
+
+/* Label area */
+.shop-grid .product-label{
+  padding: .65rem .85rem .25rem;
+}
+.shop-grid .product-title{
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.15;
+  margin: 0;
+}
+.shop-grid .product-notes{
+  margin: .2rem 0 0 0;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+/* Footer row with price + button */
+.shop-grid .product-foot{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.75rem;
+  padding: .65rem .85rem .85rem;
+}
+.shop-grid .price{
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* Button size tweak for cards */
+.shop-grid .btn{
+  padding: .55rem .8rem;
+  white-space: nowrap;
+}
+
+/* Optional: tighten on small screens */
+@media (max-width: 640px){
+  .shop-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+
+/* ---------- Modal ---------- */
+.modal{ position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.5) }
+.modal[open]{ display:grid }
+.modal .dialog{
+  width:min(720px,92vw); background:rgb(0 0 0); border:1px solid #2a2a2c; border-radius:1rem; overflow:hidden
+}
+.modal header, .modal footer{ padding:1rem; border-bottom:1px solid #1f2024 }
+.modal footer{ border-top:1px solid #1f2024; border-bottom:none; display:flex; justify-content:space-between; align-items:center }
+.modal .body{ padding:1rem }
+.close-btn{ background:transparent; border:none; color:#fff; font-size:1.125rem; cursor:pointer }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+/* ---------- Footer ---------- */
+footer{ padding:2rem 0; color:#9aa0aa }
+footer .grid{ align-items:center }
+.brand-swatch{ display:inline-block; width:.85rem; height:.85rem; border-radius:2px; margin-right:.5rem }
+
+/* ---------- Icon badge ---------- */
+.arch-icon{
+  position:absolute; top:.75rem; left:.75rem;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border-radius:50%;
+  background:#ffffff18; border:1px solid var(--border); backdrop-filter: blur(2px);
+}
+
+/* ---------- Particle Sparks (CSS) ---------- */
+.spark{
+  --h: 45; --dx: 0; --dy: -1; --life: 600ms;
+  position:absolute; width:6px; height:6px; border-radius:50%;
+  background: hsl(var(--h) 90% 70%);
+  box-shadow: 0 0 8px hsl(var(--h) 90% 70% / .9), 0 0 16px hsl(var(--h) 90% 60% / .6);
+  pointer-events:none; transform: translate(-50%, -50%);
+  animation: spark-fly var(--life) ease-out forwards;
+  will-change: transform, opacity;
+}
+@keyframes spark-fly{
+  0%   { opacity: 1; transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1) }
+  100% { opacity: 0; transform: translate(calc(-50% + 60px*var(--dx)), calc(-50% + 60px*var(--dy))) scale(.4) }
+}
+@media (prefers-reduced-motion: reduce){
+  .spark{ display:none !important }
+}
